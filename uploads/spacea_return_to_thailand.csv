@@ -1,0 +1,8 @@
+return_gateway,gateway_region,commercial_hop,est_cost_usd,est_time,hop_light,reachable_via_spacea_from,notes,source_date
+Singapore (Paya Lebar),Singapore,SIN -> BKK/DMK,40-90,2h20,green,"Yokota->Singapore contract shuttle ~3x/wk; Kadena connections","BEST finish to Thailand — Scoot/AirAsia many daily, short + cheap",2026-07
+Osan AB,South Korea,ICN -> BKK/DMK,90-180,6h,green,"Travis/McChord->Osan; Kadena->Osan hops","Tons of LCCs ICN->Bangkok daily; very easy last leg",2026-07
+Yokota AB,Japan (Tokyo),NRT/HND -> BKK/DMK,110-240,7h,green,"Travis->Yokota frequent; McChord->Yokota","Scoot/ZipAir/AirAsia cheap Tokyo->Bangkok",2026-07
+Kadena AB,Japan (Okinawa),OKA -> BKK (usually 1 stop TPE/HKG),150-320,6-10h,yellow,"Travis->Kadena frequent; Andersen->Kadena","Few direct OKA->BKK; usually one connection",2026-07
+U-Tapao (Rayong),Thailand,none - already home,0,0,green,"rare Space-A / gray-tail into U-Tapao","If any mission lands U-Tapao you are already in Thailand — jackpot",2026-07
+Al Udeid AB,Qatar,DOH -> BKK/DMK,150-300,7h,yellow,"Ramstein->Al Udeid (CENTCOM); NS Norfolk PE","Best bridge when returning FROM Europe; Doha->Bangkok cheap-ish",2026-07
+Andersen AFB,Guam,GUM -> BKK (1-2 stops),250-500,12h+,red,"Travis->Andersen; Hickam->Andersen","Awkward routing via MNL/ICN; last resort only",2026-07

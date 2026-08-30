@@ -1,0 +1,40 @@
+terminal,destination,dest_region,military_gateway,gateway_light,onward_hop,overall_light,notes,source_date
+JB McGuire-Dix-Lakehurst,Ramstein AB,Germany,Ramstein AB,green,none,green,"Regular ~weekly cargo/C-17 to Ramstein; primary transatlantic hub",2026-07
+JB McGuire-Dix-Lakehurst,Praia da Vitoria (Azores),Portugal,Lajes Field,yellow,short commercial,yellow,"Eastbound cargo sometimes stops Lajes; not guaranteed",2026-07
+JB McGuire-Dix-Lakehurst,Tarifa,Spain,Ramstein AB,green,cargo hop to Rota + drive,yellow,"Rota PE was CUT Oct 2025; reach via Ramstein cargo hop then ground",2026-07
+JB McGuire-Dix-Lakehurst,Tiree,Scotland,RAF Mildenhall,yellow,ferry/commercial,yellow,"Occasional McGuire->Mildenhall; last leg is ferry",2026-07
+JB McGuire-Dix-Lakehurst,Sotavento Fuerteventura,Canary Islands (Spain),Ramstein AB,green,long commercial,red,"No mil gateway near Canaries; long commercial after Ramstein",2026-07
+JB McGuire-Dix-Lakehurst,Dakhla,Morocco/W. Sahara,Ramstein AB,green,long commercial,red,"No mil route; commercial only after Europe",2026-07
+JB McGuire-Dix-Lakehurst,Rhodes / Kos / Naxos,Greece,Souda Bay,red,commercial,red,"Souda Bay PE CUT Oct 2025; cargo to Greece rare",2026-07
+JB McGuire-Dix-Lakehurst,Cabarete,Dominican Republic,none,red,commercial from Miami,yellow,"McGuire->Miami seen; then commercial to POP",2026-07
+JB McGuire-Dix-Lakehurst,Hood River / Columbia Gorge,USA-OR,JB Lewis-McChord,yellow,ground,yellow,"McGuire->McChord domestic; then drive down I-84",2026-07
+JB McGuire-Dix-Lakehurst,Mt. Baker,USA-WA,JB Lewis-McChord,yellow,ground,yellow,"McGuire->McChord domestic; then drive",2026-07
+JB McGuire-Dix-Lakehurst,Lake Dillon / Frisco,USA-CO,Buckley SFB / Peterson,yellow,ground,yellow,"Domestic hops to Denver area then drive",2026-07
+JB McGuire-Dix-Lakehurst,Hua Hin / Pranburi,Thailand,none,red,none,red,"Wrong coast; route via Travis->Pacific instead",2026-07
+JB McGuire-Dix-Lakehurst,Kalpitiya,Sri Lanka,none,red,none,red,"No realistic mil route; wrong coast",2026-07
+JB McGuire-Dix-Lakehurst,Le Morne,Mauritius,none,red,none,red,"Commercial only; extremely hard",2026-07
+JB McGuire-Dix-Lakehurst,Paje Zanzibar,Tanzania,none,red,none,red,"Commercial only; extremely hard",2026-07
+Travis AFB,Yokota AB,Japan,Yokota AB,green,none,green,"Primary West Coast Pacific hub; frequent",2026-07
+Travis AFB,Kadena AB,Japan (Okinawa),Kadena AB,green,none,green,"Frequent Pacific cargo/PE",2026-07
+Travis AFB,JB Pearl Harbor-Hickam,USA-HI,Hickam,green,none,green,"Very frequent West Coast->Hawaii",2026-07
+Travis AFB,Hua Hin / Pranburi,Thailand,Kadena AB,green,commercial to BKK,yellow,"Travis->Kadena/Yokota then commercial to Bangkok/Hua Hin",2026-07
+Travis AFB,Hood River / Columbia Gorge,USA-OR,JB Lewis-McChord,yellow,ground,yellow,"Travis->McChord then drive",2026-07
+Travis AFB,Mt. Baker,USA-WA,JB Lewis-McChord,yellow,ground,yellow,"Travis->McChord then drive",2026-07
+Travis AFB,Kalpitiya,Sri Lanka,none,red,long commercial,red,"No mil route to Sri Lanka; very hard",2026-07
+Travis AFB,Le Morne,Mauritius,none,red,none,red,"Commercial only",2026-07
+Travis AFB,Paje Zanzibar,Tanzania,none,red,none,red,"Commercial only",2026-07
+JB Lewis-McChord,Yokota AB,Japan,Yokota AB,yellow,none,yellow,"Pacific missions less frequent than Travis",2026-07
+JB Lewis-McChord,Hood River / Columbia Gorge,USA-OR,JB Lewis-McChord,green,ground,green,"You are the gateway; just drive south",2026-07
+JB Lewis-McChord,Mt. Baker,USA-WA,JB Lewis-McChord,green,ground,green,"Local; short drive",2026-07
+Seattle (SEA),Yokota AB,Japan,Yokota AB,yellow,none,yellow,"Patriot Express only terminal; PE to Pacific",2026-07
+Seattle (SEA),JB Pearl Harbor-Hickam,USA-HI,Hickam,yellow,none,yellow,"PE to Hawaii when scheduled",2026-07
+BWI (Baltimore),Ramstein AB,Germany,Ramstein AB,green,none,green,"ONLY remaining Patriot Express to Europe (post Oct-2025 cuts)",2026-07
+BWI (Baltimore),Tarifa,Spain,Ramstein AB,green,cargo hop to Rota,yellow,"Via Ramstein PE then cargo hop",2026-07
+Dover AFB,Ramstein AB,Germany,Ramstein AB,green,none,green,"Major East Coast transatlantic cargo hub",2026-07
+Dover AFB,Praia da Vitoria (Azores),Portugal,Lajes Field,yellow,short commercial,yellow,"Eastbound cargo stops Lajes sometimes",2026-07
+JB Charleston,Ramstein AB,Germany,Ramstein AB,yellow,none,yellow,"Fairly frequent Europe missions",2026-07
+NS Norfolk,Ramstein AB,Germany,Ramstein AB,yellow,none,yellow,"Cargo missions; check both 72hr + AEF boards",2026-07
+Kadena AB,Hua Hin / Pranburi,Thailand,Kadena AB,green,commercial to BKK,yellow,"Kadena->commercial to Bangkok/Hua Hin",2026-07
+Kadena AB,JB Pearl Harbor-Hickam,USA-HI,Hickam,green,none,green,"Frequent trans-Pacific",2026-07
+Ramstein AB,Tarifa,Spain,Rota NS,yellow,ground,yellow,"Intra-Europe cargo hop Ramstein->Rota then drive to Tarifa",2026-07
+Ramstein AB,Rhodes / Kos / Naxos,Greece,Souda Bay,red,commercial,red,"Souda PE cut; cargo rare",2026-07
