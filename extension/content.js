@@ -413,6 +413,25 @@
 
     const more = REGS.length > 1 ? ` Then hit "Next base → ${REGS[(IDX + 1) % REGS.length].terminal}" for the next one (${IDX + 1} of ${REGS.length} done).` : "";
     note(`✅ Filled ${filled} field${filled === 1 ? "" : "s"}${softN ? ` — ${softN} amber one${softN === 1 ? "" : "s"} (Country/State guessed from the base's location) need your eyes` : ""}${asked ? ` (${asked} confirmed with you)` : ""}${r0 ? " for " + r0.terminal : ""}. REVIEW the highlighted fields, then click the site's Submit yourself.${more} Use the popup's "Capture confirmation" to save proof.`, "#14321f");
+    verifyStuck(local);
+  }
+
+  // SPAs sometimes re-render moments after the fill and wipe the values (late hydration — the AMC
+  // tool does this). Check the fill STUCK; if a filled field went blank or was replaced, clear the
+  // one-shot gate and fill again — up to 3 tries, so a stubborn page still can't loop forever.
+  let _verifyN = 0;
+  function verifyStuck(local) {
+    if (!local.length) return;
+    setTimeout(() => {
+      if (!VAULT) return;
+      const wiped = local.some(s => !s.f.el.isConnected || !s.f.el.value);
+      if (!wiped) { _verifyN = 0; return; }
+      if (_verifyN >= 3) { note("⚠️ The page keeps wiping the fill — hit the ⚡ button after it settles.", "#7a2b2b"); _verifyN = 0; return; }
+      _verifyN++;
+      try { sessionStorage.removeItem("spaceaAuto:" + location.pathname + "|" + IDX); } catch (e) {}
+      note("🤖 The page re-rendered and wiped the fill — filling again (" + _verifyN + "/3)…");
+      run();
+    }, 1600);
   }
 })();
 
