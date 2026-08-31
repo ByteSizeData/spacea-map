@@ -48,6 +48,24 @@ Rules: never map password/OTP/CAPTCHA-like fields; if a field is for the sponsor
 
 importScripts("terminals.js", "cadence.js", "pdf.js");
 
+// Let content scripts read extension session storage — this is what makes the zero-touch flow real:
+// the beamed packet survives navigations/MFA redirects and every AMC page re-arms itself from it.
+try { chrome.storage.session.setAccessLevel({ accessLevel: "TRUSTED_AND_UNTRUSTED_CONTEXTS" }); } catch (e) {}
+
+// planner packet JSON → {vault, regs} (same shape the popup's manual import builds)
+function packetToSession(p) {
+  const vault = {};
+  for (const [k, v] of Object.entries(p)) {
+    if (k === "source" || k === "v" || k === "registrations" || v == null || v === "") continue;
+    if (k === "destinations") { (v || []).slice(0, 5).forEach((d, i) => { vault["dest" + (i + 1)] = d; }); }
+    else if (typeof v !== "object") vault[k] = v;
+  }
+  const regs = (Array.isArray(p.registrations) && p.registrations.length)
+    ? p.registrations.map(r => Object.assign({}, r, { terminal: r.terminal || "", destinations: (r.destinations || []).slice(0, 5) }))
+    : [{ terminal: p.terminal || "", destinations: (p.destinations || []).slice(0, 5), dateRange: p.travelWindow || "" }];
+  return { vault, regs, idx: 0 };
+}
+
 // ═══ THE SCRAPER — every terminal, both boards, read and reported ═══
 // A web page cannot fetch .mil (the sites block cross-origin reads). This service worker can, because
 // of host_permissions, so ALL scraping lives here. It wakes on an alarm, pulls each watched terminal's
@@ -232,6 +250,28 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           sendResponse({ ok: false, mode: "blocked" });
         }
       } catch (e) { sendResponse({ ok: false, mode: "error", error: String(e).slice(0, 120) }); }
+    })();
+    return true;
+  }
+  // Zero-touch handoff: planner beams the packet via the bridge. Store it session-wide (RAM only —
+  // same privacy model as the popup import) and poke any open tabs so already-open forms arm NOW.
+  if (msg.type === "PACKET_SYNC") {
+    (async () => {
+      try {
+        let p = msg.packet; if (typeof p === "string") p = JSON.parse(p);
+        if (!p || p.source !== "spacea-planner") { sendResponse({ ok: false, error: "not a planner packet" }); return; }
+        const sess = packetToSession(p);
+        await chrome.storage.session.set({ afSession: sess });
+        let poked = 0;
+        try {
+          const tabs = await chrome.tabs.query({});
+          for (const t of tabs) {
+            if (!t.url || !/^https:/.test(t.url)) continue;
+            try { await chrome.tabs.sendMessage(t.id, { type: "VAULT_SESSION", vault: sess.vault, regs: sess.regs }); poked++; } catch (e) {}
+          }
+        } catch (e) {}
+        sendResponse({ ok: true, regs: sess.regs.length, poked });
+      } catch (e) { sendResponse({ ok: false, error: String(e).slice(0, 120) }); }
     })();
     return true;
   }

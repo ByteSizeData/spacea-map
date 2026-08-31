@@ -1431,6 +1431,19 @@ function openIncog(url){
   window.postMessage({spaceaBridge:"open-incognito",url},"*");
   setTimeout(()=>{ if(!done){ window.removeEventListener("message",ack); fallback(); } },600);
 }
+// Zero-touch handoff: hand the packet straight to the ⚡ extension via its bridge — no clipboard,
+// no popup. The extension stores it session-wide; every AMC form then fills itself on sight.
+window.__beamPacket=function(json){
+  let done=false;
+  const ack=ev=>{ const d=ev.data;
+    if(ev.source!==window||!d||d.spaceaBridge!=="packet-ack") return;
+    done=true; window.removeEventListener("message",ack);
+    if(d.ok) toast("⚡ Beamed to the extension — "+(d.regs||0)+" sign-ups armed"+(d.poked?" ("+d.poked+" open tab"+(d.poked===1?"":"s")+" armed too)":"")+". Forms fill themselves; you just review + Submit.");
+  };
+  window.addEventListener("message",ack);
+  window.postMessage({spaceaBridge:"packet-sync",packet:json},"*");
+  setTimeout(()=>{ if(!done) window.removeEventListener("message",ack); },1500);
+};
 async function runFillAll(t,r,T){
   const bs=T.bases.slice();
   if(!bs.length){ toast("No bases to sign up at yet"); return; }
@@ -1487,6 +1500,7 @@ async function runFillAll(t,r,T){
     if(rc) rc.onclick=async()=>{
       const pk=window.__afPacket;
       if(!pk){ toast("Packet not built yet — press the ⚡ fill button above first"); return; }
+      if(window.__beamPacket) window.__beamPacket(pk);
       try{ await navigator.clipboard.writeText(pk); toast("Packet copied — paste it in the extension popup's paste box"); }
       catch(e){ toast("Copy blocked — select + copy from the popup paste box instead"); }
     };

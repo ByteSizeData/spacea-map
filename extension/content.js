@@ -213,6 +213,19 @@
   new MutationObserver(() => { if (VAULT) maybeAutoRun(); })
     .observe(document.documentElement, { childList: true, subtree: true });
   restoreSession();
+  try { // zero-touch: a packet beamed from the planner lands in session storage — adopt it live, no popup
+    chrome.storage.session.onChanged.addListener(ch => {
+      if (!ch.afSession || !ch.afSession.newValue) return;
+      const s = ch.afSession.newValue;
+      if (JSON.stringify(s) === JSON.stringify({ vault: VAULT, regs: REGS, idx: IDX })) return;
+      VAULT = s.vault || null; REGS = s.regs || []; IDX = s.idx || 0;
+      if (!VAULT) return;
+      try { Object.keys(sessionStorage).forEach(k => { if (k.indexOf("spaceaAuto:") === 0) sessionStorage.removeItem(k); }); } catch (e) {}
+      ensureButton(); label(); pillPaint();
+      note("⚡ Packet received from your planner — auto-filling the moment the form appears. The Submit click stays yours.");
+      maybeAutoRun();
+    });
+  } catch (e) {}
 
   function note(t, color) {
     if (banner) banner.remove();

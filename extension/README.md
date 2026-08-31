@@ -12,7 +12,10 @@ supported path. The in-app **copy packet** remains the fallback when it isn't in
    identity-proofing loop). Testing from a local `file://` page? Also flip **Allow access to file URLs**.
 3. Click the extension icon → paste your **Anthropic API key** (stored locally, used only to map field labels).
 
-## Quick flow (v1.3.1 hybrid agent — arm once per session)
+## Quick flow (v1.4 zero-touch — one ⚡ click in the planner, forms fill themselves)
+0. In the planner, hit the ⚡ sign-up button once — the packet beams straight into the extension
+   (no clipboard, no popup; both remain as manual fallbacks). Every open AMC tab arms instantly,
+   and every AMC page you navigate to re-arms itself and auto-fills on sight. You only review + Submit.
 1. Log into the AMC tool yourself (banner, MFA, CAPTCHA).
 2. Popup → **🤖 Fill this form now** — this arms the session.
 3. From then on the page handles itself: status pill bottom-left, cyan **⚡ Auto-fill** button bottom-right.

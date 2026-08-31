@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Space-A One-Button Autofill",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "Fills the official AMC Space-A sign-up form from your encrypted traveler vault, watches the 72-hr and 30-day boards (with public-aggregator fallback for terminals that publish nothing), and saves your confirmations. YOU do login, MFA, and the final Submit — always.",
   "permissions": [
     "storage",
@@ -48,6 +48,7 @@
         "https://spacea.app/*",
         "https://popsspacea.com/*",
         "https://anyrouteai.com/*",
+        "https://bytesizedata.github.io/*",
         "http://localhost/*",
         "http://127.0.0.1/*",
         "file:///*"

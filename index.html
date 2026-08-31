@@ -5655,6 +5655,7 @@ window.chkAutofillAll=function(list,win){
   p.travelWindow=range;
   window.__afPacket=JSON.stringify(p,null,2);   // the run panel's "re-copy" reads this — no vault re-prompt
   copyText(window.__afPacket,regs.length+" sign-ups copied (destination + return) — open the ⚡ button on the sign-up page and hit 'Auto-fill this form' for each base");
+  if(window.__beamPacket) window.__beamPacket(window.__afPacket); // zero-touch: extension armed directly — its ack toast replaces the clipboard one
   // open the tool ONCE per session — every re-copy used to spawn ANOTHER homepage tab, dumping you at
   // the AMC landing page again and again while your logged-in form tab sat elsewhere
   try{
